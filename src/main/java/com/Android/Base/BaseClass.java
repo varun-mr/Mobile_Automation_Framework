@@ -84,9 +84,16 @@ public class BaseClass {
 
 			cap = new DesiredCapabilities();
 
+			if (Config.getProperty("appType").equalsIgnoreCase("Native")) {
+				cap.setCapability(MobileCapabilityType.APP, fs.getAbsolutePath());
+			} else if (Config.getProperty("appType").equalsIgnoreCase("Hybrid")) {
+				System.out.println("Inside Hybrid condition");
+			} else if (Config.getProperty("appType").equalsIgnoreCase("MobileBrowser")) {
+				cap.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
+			}
+
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, device);
 			cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiAutomator2");
-			cap.setCapability(MobileCapabilityType.APP, fs.getAbsolutePath());
 			cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 15);
 
 			AppiumServer();
@@ -220,7 +227,7 @@ public class BaseClass {
 		test.log(Status.INFO, "Text extracted from the locator is: " + "'" + resultString + "'");
 		return resultString;
 	}
-	
+
 	public static void clickBackButton() {
 		driver.pressKey(new KeyEvent(AndroidKey.BACK));
 	}
