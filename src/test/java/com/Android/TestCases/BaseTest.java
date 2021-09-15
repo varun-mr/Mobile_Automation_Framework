@@ -1,13 +1,13 @@
 package com.Android.TestCases;
 
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeSuite;
 
 import com.Android.Base.BaseClass;
 
 public class BaseTest {
 
-	@BeforeTest
+	@BeforeSuite
 	public void KillNodeProcesses() throws IOException, InterruptedException {
 		Runtime.getRuntime().exec("taskkill /F /IM node.exe");
 		Thread.sleep(3000);
