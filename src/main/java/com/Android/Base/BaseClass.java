@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -230,6 +231,16 @@ public class BaseClass {
 
 	public static void clickBackButton() {
 		driver.pressKey(new KeyEvent(AndroidKey.BACK));
+	}
+	
+	public static String randomstring() {
+		String generatedString = RandomStringUtils.randomAlphabetic(5);
+		return (generatedString);
+	}
+	
+	public static int randomNum() {
+		String generatedNum = RandomStringUtils.randomNumeric(4);
+		return (Integer.parseInt(generatedNum));
 	}
 
 }
